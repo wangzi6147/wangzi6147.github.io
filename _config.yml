@@ -28,7 +28,7 @@ favicon: /public/img/233.png
 #  url: painterlin.com
 
 # disqus 设置
-duoshuo:
+disqus:
   shortname: wangzi6147
 
 # 主题设置，自动激活某个标签

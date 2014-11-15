@@ -3,9 +3,9 @@ title : Sitemap
 ---
 
 {% for page in site.pages %}
-  {{site.address}}{{ page.url }}
+  {{site.url}}{{ page.url }}
 {% endfor %}
 
 {% for post in site.posts %}
-  {{site.address}}{{ post.url }}
+  {{site.url}}{{ post.url }}
 {% endfor %}

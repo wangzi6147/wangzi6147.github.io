@@ -1,8 +1,8 @@
 <!-- 多说评论框 start -->
-	<div class="ds-thread" {% if page.id == null %}data-thread-key="{{ page.url }}" data-title="{{page.url}}"{%else%} data-thread-key="{{ page.id }}" data-title="{{page.title}}"{%endif%}data-url="{{site.url}}{{page.url}}" ></div>
+<!--	<div class="ds-thread" {% if page.id == null %}data-thread-key="{{ page.url }}" data-title="{{page.url}}"{%else%} data-thread-key="{{ page.id }}" data-title="{{page.title}}"{%endif%}data-url="{{site.url}}{{page.url}}" ></div>-->
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
-<script type="text/javascript">
+<!--<script type="text/javascript">
 var duoshuoQuery = {short_name:"wangzi6147"};
 	(function() {
 		var ds = document.createElement('script');
@@ -12,5 +12,28 @@ var duoshuoQuery = {short_name:"wangzi6147"};
 		(document.getElementsByTagName('head')[0] 
 		 || document.getElementsByTagName('body')[0]).appendChild(ds);
 	})();
-	</script>
+	</script>-->
 <!-- 多说公共JS代码 end -->
+
+<script>var duoshuoQuery = {short_name:"wangzi6147"};</script>
+<script src="http://static.duoshuo.com/embed.js"></script>
+<script type = "texi/javascript">
+	function toggleDuoshuoComments(container){
+		document.getElementById("duoshuo_btn").style.display="none";
+    var el = document.createElement('div');//该div不需要设置class="ds-thread"
+	{% if page.id == null %}
+    el.setAttribute('data-thread-key', '{{ page.url }}');//必选参数
+	{%else%}
+	el.setAttribute('data-thread-key', '{{ page.id }}');//必选参数
+	{%endif%}
+    el.setAttribute('data-url', '{{site.url}}{{page.url}}');//必选参数
+    DUOSHUO.EmbedThread(el);
+    jQuery(container).append(el);
+	}
+</script>
+<div id="duoshuo_btn">
+	<button type="button" style="width:100%" class="btn btn-default" onclick="toggleDuoshuoComments('#comment-box');">	
+  		<i class="fa fa-comment-o fa-lg" style="color: #16a095;"></i>     <!-- 修改显示评论按钮图标-->
+	</button>
+</div>
+<div id="comment-box" ></div>

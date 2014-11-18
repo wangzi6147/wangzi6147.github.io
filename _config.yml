@@ -31,6 +31,10 @@ favicon: /public/img/guitar.png
 disqus:
   shortname: wangzi6147
 
+# duoshu 设置
+duoshuo:
+  shortname: wangzi6147
+  
 # 主题设置，自动激活某个标签
 active: 杂
 

@@ -10,10 +10,15 @@
 	function toggleDuoshuoComments(container){
 		document.getElementById("duoshuo_btn").style.display="none";
     var el = document.createElement('div');//该div不需要设置class="ds-thread"
-	{% if page.id == null %}
-    el.setAttribute('data-thread-key', '{{ page.url }}');//必选参数
+	{% if page.id %}
+    el.setAttribute('data-thread-key', '{{ page.id }}');//必选参数
 	{%else%}
-	el.setAttribute('data-thread-key', '{{ page.id }}');//必选参数
+	el.setAttribute('data-thread-key', '{{ page.url }}');//必选参数
+	{%endif%}
+	{% if page.title %}
+    el.setAttribute('data-title', '{{ page.title }}');//可选参数
+	{%else%}
+	el.setAttribute('data-title', '{{ page.url }}');//可选参数
 	{%endif%}
     el.setAttribute('data-url', '{{site.url}}{{page.url}}');//必选参数
     DUOSHUO.EmbedThread(el);

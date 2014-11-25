@@ -14,8 +14,11 @@ description:
 分享一个吉他谱吧。
 
 ![](/public/img/guitar/buyaowenwo_1.jpg)
+
 ![](/public/img/guitar/buyaowenwo_2.jpg)
+
 ![](/public/img/guitar/buyaowenwo_3.jpg)
+
 ![](/public/img/guitar/buyaowenwo_4.jpg)
 
 <audio controls>

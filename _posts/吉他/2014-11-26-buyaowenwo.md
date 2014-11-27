@@ -13,6 +13,11 @@ description:
 
 分享一个吉他谱吧。
 
+<audio controls>
+  <source src="/public/audio/不要问我过得好不好.mp3" type="audio/mpeg">
+  您的浏览器不支持 audio 元素。
+</audio>
+
 ![](/public/img/guitar/buyaowenwo_1.jpg)
 
 ![](/public/img/guitar/buyaowenwo_2.jpg)
@@ -20,8 +25,3 @@ description:
 ![](/public/img/guitar/buyaowenwo_3.jpg)
 
 ![](/public/img/guitar/buyaowenwo_4.jpg)
-
-<audio controls>
-  <source src="/public/audio/不要问我过得好不好.mp3" type="audio/mpeg">
-  您的浏览器不支持 audio 元素。
-</audio>

@@ -29,14 +29,14 @@ description:
     
 运行后"输出"窗口会显示内存泄露信息：
 
-![](/public/imgs/MemoryLeak_1.bmp)
+![](/public/img/MemoryLeak_1.bmp)
 
 但是这里的文件位置还不是准确的，指向的是*crtdbg.h*这个头文件，这里可以用到一个小技巧：双击文件跳转到对应行，添加断点，添加条件，当new的空间大小等于"输出"窗口所显示的空间大小时，触发断点。如图所示：
 
-![](/public/imgs/MemoryLeak_2.bmp)
+![](/public/img/MemoryLeak_2.bmp)
 
 触发断点后，在“调用堆栈”里就可以看到具体是哪里申请的内存了：
 
-![](/public/imgs/MemoryLeak_3.bmp)
+![](/public/img/MemoryLeak_3.bmp)
 
 当然，这只是一种“歪门邪道”，因为如果泄露的内存大小是个很常见的数字，比如8bit，4bit之类，这种方法就没用了。

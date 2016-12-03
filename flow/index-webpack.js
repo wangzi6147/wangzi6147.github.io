@@ -76,11 +76,12 @@
 
 	var spirit = void 0;
 	var enemies = [];
-	var enemyCount = 10;
 	var timer = void 0;
 	var holdingTime = 0;
 	var bestTime = 0;
 
+	var enemyCount = 10;
+	var pointRadius = 30;
 	var canvas = document.getElementById("mainCanvas");
 	var cxt = canvas.getContext("2d");
 	canvas.width = window.innerWidth;
@@ -105,15 +106,15 @@
 	function initEnemies() {
 	    enemies = [];
 	    for (var i = 0; i < enemyCount; i++) {
-	        var x = Math.random() * _Map2.default.width;
-	        var y = Math.random() * _Map2.default.height;
+	        var x = pointRadius + Math.random() * (_Map2.default.width - 2 * pointRadius);
+	        var y = pointRadius + Math.random() * (_Map2.default.height - 2 * pointRadius);
 	        var vx = Math.random() * 2 - 1;
 	        var vy = Math.random() * 2 - 1;
 	        var speed = Math.random() * 10 + 10;
 	        enemies.push(new _Enemy2.default({
 	            x: x,
 	            y: y,
-	            radius: 30,
+	            radius: pointRadius,
 	            color: "red",
 	            vx: vx,
 	            vy: vy,

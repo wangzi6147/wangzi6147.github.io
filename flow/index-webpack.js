@@ -369,6 +369,10 @@
 	    _createClass(Point, [{
 	        key: "moveTo",
 	        value: function moveTo(x, y) {
+	            x = x < this.radius ? this.radius : x;
+	            x = x > _Map2.default.width - this.radius ? _Map2.default.width - this.radius : x;
+	            y = y < this.radius ? this.radius : y;
+	            y = y > _Map2.default.height - this.radius ? _Map2.default.height - this.radius : y;
 	            this.x = x;
 	            this.y = y;
 	        }

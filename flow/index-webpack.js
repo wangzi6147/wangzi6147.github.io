@@ -96,7 +96,7 @@
 	    spirit = new _Spirit2.default({
 	        x: _Map2.default.width / 2,
 	        y: _Map2.default.height / 2,
-	        radius: 10,
+	        radius: 30,
 	        color: 'green',
 	        enemies: enemies
 	    });
@@ -109,11 +109,11 @@
 	        var y = Math.random() * _Map2.default.height;
 	        var vx = Math.random() * 2 - 1;
 	        var vy = Math.random() * 2 - 1;
-	        var speed = Math.random() * 3 + 3;
+	        var speed = Math.random() * 10 + 10;
 	        enemies.push(new _Enemy2.default({
 	            x: x,
 	            y: y,
-	            radius: 10,
+	            radius: 30,
 	            color: "red",
 	            vx: vx,
 	            vy: vy,
@@ -132,7 +132,7 @@
 	    cxt.textAlign = 'left';
 	    cxt.textBaseline = 'top';
 	    cxt.strokeStyle = 'white';
-	    cxt.font = 'arial';
+	    cxt.font = 'bold 36px arial';
 	    cxt.fillStyle = 'white';
 	    cxt.fillText("Time: " + holdingTime + "  Best: " + bestTime, 5, 10);
 	}
@@ -267,6 +267,8 @@
 	var devices = ["android", "webos", "iphone", "ipad", "ipod", "blackberry", "windows phone", "mobile"];
 	var agent = navigator.userAgent.toLowerCase();
 	var isMobile = detect(devices, agent);
+	var lastRoundX = -1;
+	var lastRoundY = -1;
 
 	var Spirit = function (_Point) {
 	    _inherits(Spirit, _Point);
@@ -278,6 +280,12 @@
 
 	        if (options) {
 	            _this.enemies = options.enemies;
+	        }
+	        if (lastRoundX != -1) {
+	            _this.touchStartX = lastRoundX;
+	        }
+	        if (lastRoundY != -1) {
+	            _this.touchStartY = lastRoundY;
 	        }
 	        _this.dead = false;
 	        _this.bind();
@@ -292,16 +300,22 @@
 	            if (isMobile) {
 	                window.addEventListener('touchstart', function (e) {
 	                    e.preventDefault();
-	                    _this2.touchStartX = e.touches[0].pageX;
-	                    _this2.touchStartY = e.touches[0].pageY;
+	                    if (!_this2.dead) {
+	                        lastRoundX = e.touches[0].pageX;
+	                        lastRoundY = e.touches[0].pageY;
+	                        _this2.touchStartX = e.touches[0].pageX;
+	                        _this2.touchStartY = e.touches[0].pageY;
+	                    }
 	                });
 	                window.addEventListener('touchmove', function (e) {
 	                    e.preventDefault();
-	                    var moveX = e.touches[0].pageX - _this2.touchStartX;
-	                    var moveY = e.touches[0].pageY - _this2.touchStartY;
-	                    _this2.moveTo(_this2.x + moveX, _this2.y + moveY);
-	                    _this2.touchStartX = e.touches[0].pageX;
-	                    _this2.touchStartY = e.touches[0].pageY;
+	                    if (!_this2.dead) {
+	                        var moveX = e.touches[0].pageX - _this2.touchStartX;
+	                        var moveY = e.touches[0].pageY - _this2.touchStartY;
+	                        _this2.moveTo(_this2.x + moveX, _this2.y + moveY);
+	                        _this2.touchStartX = e.touches[0].pageX;
+	                        _this2.touchStartY = e.touches[0].pageY;
+	                    }
 	                });
 	            } else {
 	                //TODO: Coordinate transformation

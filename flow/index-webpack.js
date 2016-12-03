@@ -86,7 +86,7 @@
 	    spirit = new _Spirit2.default({
 	        x: _Map2.default.width / 2,
 	        y: _Map2.default.height / 2,
-	        radius: 5,
+	        radius: 10,
 	        color: "red"
 	    });
 	}
@@ -180,7 +180,7 @@
 
 	function detect(arr, val) {
 	    return arr.some(function (v) {
-	        return v.match(val);
+	        return val.match(v);
 	    });
 	}
 	var devices = ["android", "webos", "iphone", "ipad", "ipod", "blackberry", "windows phone", "mobile"];
@@ -214,18 +214,20 @@
 	            if (isMobile) {
 	                window.addEventListener('touchstart', function (e) {
 	                    e.preventDefault();
-	                    _this2.touchStartX = e.touches[0].x;
-	                    _this2.touchStartY = e.touches[0].y;
+	                    _this2.touchStartX = e.touches[0].pageX;
+	                    _this2.touchStartY = e.touches[0].pageY;
 	                });
 	                window.addEventListener('touchmove', function (e) {
 	                    e.preventDefault();
-	                    var moveX = e.touches[0].x - _this2.touchStartX;
-	                    var moveY = e.touches[0].y - _this2.touchStartY;
+	                    var moveX = e.touches[0].pageX - _this2.touchStartX;
+	                    var moveY = e.touches[0].pageY - _this2.touchStartY;
+	                    console.log(moveX + " " + moveY);
 	                    _this2.moveTo(_this2.x + moveX, _this2.y + moveY);
-	                    _this2.touchStartX = e.touches[0].x;
-	                    _this2.touchStartY = e.touches[0].y;
+	                    _this2.touchStartX = e.touches[0].pageX;
+	                    _this2.touchStartY = e.touches[0].pageY;
 	                });
 	            } else {
+	                //TODO: Coordinate transformation
 	                window.addEventListener('mousemove', function (e) {
 	                    _this2.moveTo(e.clientX, e.clientY);
 	                });

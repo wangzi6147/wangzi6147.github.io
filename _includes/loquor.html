@@ -8,23 +8,11 @@
 <script type = "text/javascript">
     function toggleLoquorComments(container){
         document.getElementById("loquor_btn").style.display="none";
-        var pageId = '';
-        var pageTitle = '';
-        {% if page.id %}
-        pageId = '{{ page.id }}';
-        {%else%}
-        pageId = '{{ page.url }}';
-        {%endif%}
-        {% if page.title %}
-        pageTitle = '{{ page.title }}';
-        {%else%}
-        pageTitle = '{{ page.url }}';
-        {%endif%}
         $('<div/>', {
             'id': 'loquor_container',
-            'data-loquor-id': "{{ site.loquor.shortname }}",
-            'data-loquor-page-id': pageId,
-            'data-loquor-pagetitle': pageTitle,
+            'data-loquor-id': '{{ site.loquor.shortname }}',
+            'data-loquor-page-id': '{{ page.id }}',
+            'data-loquor-pagetitle': '{{ page.title }}',
             'data-loquor-pageurl': '{{ site.url }}{{ page.url }}'
         }).appendTo(container);
         loquorInit();

@@ -1,0 +1,32 @@
+<script src="http://jayveestorage.qiniudn.com/dev/js/loquor.js"></script>
+<div id="loquor_btn">
+    <button type="button" style="width:100%" class="btn btn-default" onclick="toggleLoquorComments('#comment-box');">
+        <i class="fa fa-comment-o fa-lg" style="color: #16a095;"></i>     <!-- 修改显示评论按钮图标-->
+    </button>
+</div>
+<div id="comment-box" ></div>
+<script type = "text/javascript">
+    function toggleLoquorComments(container){
+        document.getElementById("loquor_btn").style.display="none";
+        var pageId = '';
+        var pageTitle = '';
+        {% if page.id %}
+        pageId = '{{ page.id }}';
+        {%else%}
+        pageId = '{{ page.url }}';
+        {%endif%}
+        {% if page.title %}
+        pageTitle = '{{ page.title }}';
+        {%else%}
+        pageTitle = '{{ page.url }}';
+        {%endif%}
+        $('<div/>', {
+            'id': 'loquor_container',
+            'data-loquor-id': "{{ site.loquor.shortname }}",
+            'data-loquor-page-id': pageId,
+            'data-loquor-pagetitle': pageTitle,
+            'data-loquor-pageurl': '{{ site.url }}{{ page.url }}'
+        }).appendTo(container);
+        loquorInit();
+    }
+</script>

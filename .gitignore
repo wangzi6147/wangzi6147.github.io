@@ -2,3 +2,4 @@ _site/
 origin/
 Gemfile
 Gemfile.lock
+.idea/

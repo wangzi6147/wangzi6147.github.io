@@ -3,3 +3,4 @@ origin/
 Gemfile
 Gemfile.lock
 .idea/
+.DS_Store

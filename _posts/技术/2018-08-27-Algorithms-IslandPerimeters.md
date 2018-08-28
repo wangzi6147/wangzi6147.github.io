@@ -9,13 +9,6 @@ description:
 
 Island Perimeters
 
-    /*
-    1 0 0 1 1 1
-    1 0 0 1 1 1
-    0 0 0 0 1 1
-    周长7
-    */
-    
     public class IslandPerimeters {
     
         int result = 0;
